@@ -5,7 +5,7 @@ export default function Technologies() {
         <div className="card mb-5 max-w-[50rem] ml-auto mr-auto flex flex-col text-white mt-10">
             <h1 className='text-xl sm:text-4xl font-bold'>What I work with</h1>
             <div className='flex flex-col gap-2'>
-                <div className='flex flex-row justify-around flex-wrap pt-4'>
+                <div className='flex flex-row justify-between flex-wrap pt-4'>
                     {/* React JS */}
                     <div className='h-8 flex flex-row items-center p-8 sm:p-4 pl-0 gap-2'>
                         {/* ...React SVG... */}
@@ -46,7 +46,7 @@ export default function Technologies() {
                         <span>ExpressJS</span>
                     </div>
                 </div>
-                <div className='flex flex-row justify-around flex-wrap pt-4'>
+                <div className='flex flex-row justify-between flex-wrap pt-4'>
                     {/* Vite */}
                     <div className='h-8 flex flex-row items-center p-8 sm:p-4 pl-0 gap-2'>
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0,0,256,256">
@@ -81,7 +81,7 @@ export default function Technologies() {
                         <span>MongoDB</span>
                     </div>
                 </div>
-                <div className='flex flex-row justify-around flex-wrap pt-4'>
+                <div className='flex flex-row justify-between flex-wrap pt-4'>
                     {/* Postgres */}
                     <div className='h-8 flex flex-row items-center p-8 sm:p-4 pl-0 gap-2'>
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0,0,256,256">
