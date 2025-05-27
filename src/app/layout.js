@@ -23,6 +23,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.png" sizes="48x48" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased justify-center`}
       >

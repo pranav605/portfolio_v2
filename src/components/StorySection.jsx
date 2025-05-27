@@ -52,15 +52,15 @@ const storyData = [
 export default function StorySection() {
   return (
     <section className="mb-5 max-w-[50rem] ml-auto mr-auto flex flex-col text-white mt-10">
-      <h2 className="text-3xl font-bold mb-10">Story</h2>
+      <h2 className="text-2xl sm:text-4xl font-bold mb-10">Story</h2>
       <div className="space-y-12 m-4">
         {storyData.map(({ number, title, content }) => (
-          <div key={number} className="relative pl-12 border-l-2 border-gray-700">
-            <div className="absolute -left-4 top-1 text-black bg-gray-200 w-8 h-8 rounded-full flex items-center justify-center font-bold">
+          <div key={number} className="relative p-6 sm:p-6 border-l-2 border-gray-700">
+            <div className="absolute -left-3.5 top-6.5 text-black bg-gray-200 w-6 h-6 rounded-full flex items-center justify-center font-bold">
               {number}
             </div>
-            <h3 className="text-xl font-semibold mb-2">{title}</h3>
-            <div className="text-gray-300 text-base leading-relaxed">
+            <h3 className="text-lg sm:text-xl font-semibold mb-2">{title}</h3>
+            <div className="text-gray-300 leading-relaxed">
               {content}
             </div>
           </div>
