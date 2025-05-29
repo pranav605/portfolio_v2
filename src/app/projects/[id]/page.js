@@ -4,12 +4,12 @@ import { LinkIcon } from '@heroicons/react/24/outline';
 import { useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
-export default function projectDetails() {
+export default function ProjectDetails() {
     const params = useParams();
     const [data, setData] = useState({});
     useEffect(() => {
         setData(getProject(params.id))
-    }, [])
+    }, [params.id])
 
     return (
         <div className='mb-5 max-w-[50rem] ml-auto mr-auto flex flex-col text-white mt-10'>
