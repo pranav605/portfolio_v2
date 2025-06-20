@@ -5,7 +5,7 @@ export default function NameCard() {
         <div className="card mb-5 max-w-[50rem] ml-auto mr-auto flex flex-col border border-zinc-800 rounded-md text-white p-5">
             <div className="flex flex-col gap-1 w-full">
                 <div className="flex flex-row w-full justify-between gap-2">
-                    <h1 className="m-0 text-4xl sm:font-bold">Sai Pranav Nishtala</h1>
+                    <h1 className="m-0 text-xl sm:text-4xl sm:font-bold">Sai Pranav Nishtala</h1>
                     <div className="flex gap-2 justify-end m-0">
                         <a href="mailto:saipranavnishtala@gmail.com" target="_blank" className="m-0">
                             <div className="p-2.5 border border-zinc-800 rounded-md">

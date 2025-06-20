@@ -3,8 +3,8 @@ import React from 'react'
 export default function Technologies() {
     return (
         <div className="card mb-5 max-w-[50rem] ml-auto mr-auto flex flex-col text-white mt-10">
-            <h1 className='text-xl sm:text-4xl font-bold'>What I work with</h1>
-            <div className='flex flex-col gap-2'>
+            <h1 className='text-xl md:text-4xl font-bold'>What I work with</h1>
+            <div className='hidden md:flex md:flex-col gap-2'>
                 <div className='flex flex-row justify-between flex-wrap pt-4'>
                     {/* React JS */}
                     <div className='h-8 flex flex-row items-center p-8 sm:p-4 pl-0 gap-2'>
@@ -118,6 +118,55 @@ export default function Technologies() {
                         <span>AWS</span>
                     </div>
                 </div>
+            </div>
+            <div className='md:hidden'>
+            <ul className="grid grid-cols-2 gap-4 pt-4">
+                <li className="flex justify-center items-center gap-2 border border-gray-200 rounded">
+                    <span>React JS</span>
+                </li>
+                <li className="flex justify-center items-center gap-2 border border-gray-200 rounded">
+                    <span>Node.js</span>
+                </li>
+                <li className="flex justify-center items-center gap-2 border border-gray-200 rounded">
+                    <span>Nextjs</span>
+                </li>
+                <li className="flex justify-center items-center gap-2 border border-gray-200 rounded">
+                    <span>Typescript</span>
+                </li>
+                <li className="flex justify-center items-center gap-2 border border-gray-200 rounded">
+                    <span>ExpressJS</span>
+                </li>
+                <li className="flex justify-center items-center gap-2 border border-gray-200 rounded">
+                    <span>Vite</span>
+                </li>
+                <li className="flex justify-center items-center gap-2 border border-gray-200 rounded">
+                    <span>HTML</span>
+                </li>
+                <li className="flex justify-center items-center gap-2 border border-gray-200 rounded">
+                    <span>CSS</span>
+                </li>
+                <li className="flex justify-center items-center gap-2 border border-gray-200 rounded">
+                    <span>Tailwind</span>
+                </li>
+                <li className="flex justify-center items-center gap-2 border border-gray-200 rounded">
+                    <span>MongoDB</span>
+                </li>
+                <li className="flex justify-center items-center gap-2 border border-gray-200 rounded">
+                    <span>Postgres</span>
+                </li>
+                <li className="flex justify-center items-center gap-2 border border-gray-200 rounded">
+                    <span>Git</span>
+                </li>
+                <li className="flex justify-center items-center gap-2 border border-gray-200 rounded">
+                    <span>Python</span>
+                </li>
+                <li className="flex justify-center items-center gap-2 border border-gray-200 rounded">
+                    <span>Django</span>
+                </li>
+                <li className="flex justify-center items-center gap-2 border border-gray-200 rounded">
+                    <span>AWS</span>
+                </li>
+            </ul>
             </div>
         </div>
     )
