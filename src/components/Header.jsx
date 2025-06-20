@@ -44,7 +44,7 @@ export default function Header() {
 
                 {/* Language Selector */}
                 <div className="hidden md:flex flex-1 text-xl justify-end items-center">
-                    <p className="cursor-pointer">English</p>
+                    <p className="cursor-pointer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
                 </div>
 
                 {/* Mobile Hamburger */}
@@ -74,9 +74,6 @@ export default function Header() {
                         </li>
                         <li>
                             <Link href="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
-                        </li>
-                        <li>
-                            <p className="cursor-pointer">English</p>
                         </li>
                     </ul>
                 </div>
