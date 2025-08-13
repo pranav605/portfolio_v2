@@ -8,7 +8,7 @@ export default function About() {
             <h1 className='text-xl sm:text-4xl font-bold mb-4'>About Me</h1>
             <div className='gap-2 flex flex-col p-6'>
                 <p>
-                    With several years of professional experience in Web Development, I specialize in building full-stack websites that are fast, minimalist, and user-friendly. My work emphasizes accessibility, performance optimization, and SEO to ensure seamless user experiences and strong search visibility.
+                    With over 3+ years of professional experience in Web Development, I specialize in building full-stack websites that are fast, minimalist, and user-friendly. My work emphasizes accessibility, performance optimization, and SEO to ensure seamless user experiences and strong search visibility.
                 </p>
 
                 <p>
