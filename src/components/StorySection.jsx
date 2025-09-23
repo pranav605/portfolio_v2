@@ -7,10 +7,10 @@ const storyData = [
     content: (
       <>
         <p>
-          At the age of 10, I was introduced to a computer. Curious about it I spent most of my time learning, by learning I mean playing games :) With time my interest towards computers grew, so I chose to pursure computer science for my undergrad.
+          My fascination with computers began at the age of 10. What started as curiosity—and admittedly a lot of gaming—quickly grew into a genuine interest in understanding how computers work. This early passion led me to pursue a degree in Computer Science, where I formally began my journey into programming.
         </p>
         <p className="mt-2">
-          In 2016, I started programming for the first time. I started programming in C as part of my curriculum.{' '}
+          In 2016, I wrote my first lines of code in C as part of my undergraduate curriculum. This hands-on experience introduced me to problem-solving through programming and set the stage for exploring more complex technologies.
         </p>
       </>
     ),
@@ -20,7 +20,7 @@ const storyData = [
     title: 'Web development',
     content: (
       <p>
-        In 2017, I started learning how to create websites. I began with HTML and CSS. I started creating basic websites using HTML and CSS.
+        By 2017, I had discovered web development. I started with HTML and CSS, building basic websites and experimenting with design and layout. This phase helped me understand the fundamentals of user interfaces and the importance of creating visually appealing, functional applications.
       </p>
     ),
   },
@@ -30,10 +30,10 @@ const storyData = [
     content: (
       <>
         <p>
-          I started learning JavaScript in 2018 and built small programs like a digital piano to sharpen my skills. As my interest in web development grew, I began exploring various web technologies and frameworks.
+          In 2018, I began learning JavaScript, building small projects like a digital piano to practice and enhance my coding skills. As my interest in web development deepened, I explored various frameworks and modern web technologies. 
         </p>
         <p className="mt-2">
-          In 2019, I created a <a href='https://github.com/pranav605' target='_blank' className='text-teal-400 hover:underline cursor-pointer'>GitHub</a> profile to share my projects and track my learning journey. Since then, I’ve been building web applications both personally and professionally, continuously improving my craft.
+          In 2019, I created a <a href='https://github.com/pranav605' target='_blank' className='text-teal-400 hover:underline cursor-pointer'>GitHub</a> profile to showcase my projects and track my learning journey. Since then, I have been building web applications both personally and professionally, continuously refining my craft.
         </p>
       </>
     ),
@@ -43,7 +43,7 @@ const storyData = [
     title: 'And more',
     content: (
       <p>
-        I can create computer programs, mobile apps, web scrapers, and more. If you'd like to support me, feel free to give one of my repositories a star.
+        Today, my skill set extends beyond web development. I create computer programs, mobile apps, web scrapers, and more. I am passionate about solving real-world problems with technology and welcome anyone interested in supporting my work to explore my GitHub repositories.
       </p>
     ),
   },
