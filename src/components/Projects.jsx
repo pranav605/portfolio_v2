@@ -2,8 +2,11 @@ import { getAllProjects } from '@/utils/projectData';
 import Link from 'next/link';
 import React from 'react'
 
-export default function Projects() {
-    const data = getAllProjects();
+export default function Projects({type}) {
+    let data = getAllProjects();
+    if(type === 'showcase'){
+        data = data.filter((d)=>d.showcase);
+    }
     return (
         <div className='mb-5 max-w-[50rem] ml-auto mr-auto flex flex-col text-white mt-10'>
             <h1 className='text-xl sm:text-4xl font-bold mb-4'>Personal projects</h1>

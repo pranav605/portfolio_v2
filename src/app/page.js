@@ -8,7 +8,7 @@ export default function Home() {
       <NameCard/>
       <Technologies/>
       <Experience/>
-      <Projects/>
+      <Projects type={'showcase'}/>
     </>
   );
 }

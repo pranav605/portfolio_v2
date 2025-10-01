@@ -3,6 +3,6 @@ import React from 'react'
 
 export default function ProjectsPag() {
   return (
-    <Projects/>
+    <Projects type={'all'}/>
   )
 }
