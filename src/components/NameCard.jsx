@@ -31,7 +31,7 @@ export default function NameCard() {
                     </div>
                 </div>
                 <div className="gap-2">
-                    <h2 className="flex flex-row gap-1 items-center text-zinc-400"> <MapPinIcon height={20} width={20}/> Chatham, Ontario</h2>
+                    <h2 className="flex flex-row gap-1 items-center text-zinc-400"> <MapPinIcon height={20} width={20}/> Toronto, Ontario</h2>
                 </div>
                 <div className="gap-2">
                     <span>I'm a 26-year-old Web Developer based in Canada. I have been programming for more than 6 years, with professional experience of 2+ years.</span>
