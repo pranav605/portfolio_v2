@@ -1,8 +1,9 @@
 'use client'
+import HorizontalCarousel from '@/components/HorizontalCarousel';
 import { getProject } from '@/utils/projectData';
 import { LinkIcon } from '@heroicons/react/24/outline';
 import { useParams } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 
 export default function ProjectDetails() {
     const params = useParams();
@@ -44,7 +45,12 @@ export default function ProjectDetails() {
                 })}
             </div>
             <div className='flex gap-2 flex-col mt-8'>
-                <img src={'/' + data.image} alt='screenshot' className='w-full rounded-md'></img>
+                {data.carousel_images?.length > 1
+                    ?
+                    <HorizontalCarousel cardData={data.carousel_images} initialIndex={0}/>
+                    :
+                    <img src={'/' + data.image} alt='screenshot' className='w-full rounded-md object-contain max-h-[480px]'></img>
+                }
             </div>
         </div>
     )
