@@ -1,10 +1,10 @@
 const data = [
     {
         id: 1,
-        image: 'proview.png',
+        image: 'proview.webp',
         title: 'ProView',
         url: 'https://github.com/pranav605/Proview',
-        carousel_images: ['proview_1.jpeg','proview_2.jpeg','proview_3.jpeg'],
+        carousel_images: ['proview_1.webp','proview_2.webp','proview_3.webp'],
         technologies: [
             {
                 title: 'React Native',
@@ -42,7 +42,7 @@ const data = [
     },
     {
         id: 2,
-        image: 'openbank.png',
+        image: 'openbank.webp',
         title: 'OpenBank',
         url: 'https://open-bank-nsp.vercel.app',
         carousel_images: [],
@@ -75,7 +75,7 @@ const data = [
     },
     {
         id: 3,
-        image: 'react_portfolio.png',
+        image: 'react_portfolio.webp',
         title: 'React Portfolio',
         url: 'https://saipranavnishtala.vercel.app',
         carousel_images: [],
@@ -108,7 +108,7 @@ const data = [
     },
     {
         id: 4,
-        image: 'journal.png',
+        image: 'journal.webp',
         title: 'Journal',
         url: 'https://journal-eight-theta.vercel.app',
         carousel_images: [],
@@ -141,7 +141,7 @@ const data = [
     },
     {
         id: 5,
-        image: 'data_scraper.png',
+        image: 'data_scraper.webp',
         title: 'Data Scraper',
         url: '#',
         carousel_images: [],
