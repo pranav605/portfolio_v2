@@ -214,7 +214,7 @@ export async function POST(req) {
         return new Response(JSON.stringify({ content: res.choices[0].message.content }), {
             headers: {
                 "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "https://saipranavnishtala.com"
+                "Access-Control-Allow-Origin": process.env.DOMAIN
             }
         });
     } catch (error) {
