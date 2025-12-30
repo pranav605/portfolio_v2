@@ -1,10 +1,61 @@
 const data = [
     {
+        id: 6,
+        image: 'chatbot.webp',
+        title: 'Career Conversation Chatbot',
+        url: '#',
+        carousel_images: [],
+        technologies: [
+            {
+                title: 'Next.js',
+                svg: <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0,0,256,256">
+                    <g fill="#ffffff" fillRule="nonzero"><g transform="scale(5.33333,5.33333)"><path d="M18.974,31.5c0,0.828 -0.671,1.5 -1.5,1.5c-0.829,0 -1.5,-0.672 -1.5,-1.5v-14c0,-0.653 0.423,-1.231 1.045,-1.43c0.625,-0.198 1.302,0.03 1.679,0.563l16.777,23.704c5.142,-3.628 8.525,-9.602 8.525,-16.337c0,-11 -9,-20 -20,-20c-11,0 -20,9 -20,20c0,11 9,20 20,20c3.192,0 6.206,-0.777 8.89,-2.122l-13.916,-19.662zM28.974,16.5c0,-0.828 0.671,-1.5 1.5,-1.5c0.829,0 1.5,0.672 1.5,1.5v13.84l-3,-4.227z"></path></g></g>
+                </svg>,
+            },
+            {
+                title: 'OpenAI',
+                svg: <svg
+                    width="24px"
+                    height="24px"
+                    viewBox="0 0 24 24"
+                    role="img"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <title>{"OpenAI icon"}</title>
+                    <g fill="#ffffff" fillRule="nonzero"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z" /></g>
+                </svg>,
+            },
+            {
+                title: 'Pushover',
+                svg: <svg
+                    width="24px"
+                    height="24px"
+                    viewBox="0 0 1024 1024"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        d="m495.6 319.4 104-13.7-101.3 228.6c17.8-1.4 35.2-7.4 52.3-18.1 17.1-10.7 32.9-24.2 47.2-40.4 14.4-16.2 26.8-34.2 37.3-54.1 10.5-19.8 18-39.4 22.6-58.5 2.7-11.9 4-23.3 3.8-34.2-.2-10.9-3.1-20.5-8.6-28.7s-13.8-14.8-25-19.8-26.3-7.5-45.5-7.5c-22.4 0-44.4 3.6-66 10.9-21.7 7.3-41.7 17.9-60.2 31.8-18.5 13.9-34.5 31.2-48.2 52-13.7 20.8-23.5 44.4-29.4 70.8-2.3 8.7-3.6 15.6-4.1 20.9-.5 5.3-.6 9.6-.3 13 .2 3.4.7 6.1 1.4 7.9.7 1.8 1.3 3.6 1.7 5.5-23.3 0-40.3-4.7-51-14-10.7-9.3-13.3-25.7-7.9-48.9 5.5-24.2 17.9-47.2 37.3-69.1 19.4-21.9 42.4-41.2 69.1-57.8 26.7-16.6 55.9-29.9 87.6-39.7 31.7-9.8 62.6-14.7 92.7-14.7 26.5 0 48.7 3.8 66.7 11.3 18 7.5 32.1 17.5 42.1 29.8s16.3 26.7 18.8 43.1c2.5 16.4 1.7 33.5-2.4 51.3-5 21.4-14.5 43-28.4 64.7-13.9 21.7-31.4 41.3-52.3 58.8-21 17.6-45 31.8-72.2 42.8-27.1 10.9-56 16.4-86.6 16.4h-3.4l-86.9 195H302l193.6-435.4z"
+                        style={{
+                            fill: "#fff",
+                        }}
+                    />
+                </svg>,
+            }
+        ],
+        description: 'A career conversation chatbot which answers questions about me',
+        longDescription: [
+            "Developed an AI-powered personal website chatbot using Next.js and the OpenAI API, designed to represent my professional background, skills, and experience through natural, conversational interactions.",
+            "The chatbot integrates structured system prompts and custom tool calling to intelligently handle user interactions, including capturing contact details and logging unanswered questions. It also leverages Pushover notifications to send real-time alerts for user interest and important events, enabling quick follow-ups and continuous improvement. Built with scalability, security, and performance in mind, the solution is deployed on Vercel and seamlessly integrated into the website experience."
+        ],
+
+        showcase: true,
+    },
+    {
         id: 1,
         image: 'proview.webp',
         title: 'ProView',
         url: 'https://github.com/pranav605/Proview',
-        carousel_images: ['proview_1.webp','proview_2.webp','proview_3.webp'],
+        carousel_images: ['proview_1.webp', 'proview_2.webp', 'proview_3.webp'],
         technologies: [
             {
                 title: 'React Native',
@@ -137,7 +188,7 @@ const data = [
             'Developed a minimal and secure journaling web application using Next.js, Tailwind CSS, and Neon Postgres. The app allows users to create, view, and manage personal journal entries with a clean, distraction-free interface.',
             'Implemented user authentication and access control to ensure that only the logged-in user can view and edit their content. Designed with privacy and simplicity in mind, the app is fully responsive and deployed on Vercel for seamless access across devices.'
         ],
-        showcase: true,
+        showcase: false,
     },
     {
         id: 5,
@@ -171,7 +222,7 @@ const data = [
             'Implemented user authentication and access control to ensure that only the logged-in user can view and edit their content. Designed with privacy and simplicity in mind, the app is fully responsive and deployed on Vercel for seamless access across devices.'
         ],
         showcase: false,
-    }
+    },
 ]
 
 export function getProject(id) {

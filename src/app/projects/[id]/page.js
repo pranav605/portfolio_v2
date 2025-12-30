@@ -18,11 +18,16 @@ export default function ProjectDetails() {
                 <div className='flex flex-row w-full justify-between gap-2'>
                     <h1 className="text-2xl sm:text-4xl font-extrabold">{data.title}</h1>
                     <div className="flex gap-2 justify-end m-0">
-                        <a href={data.url} target="_blank" className="m-0">
+                        {data.title === 'Career Conversation Chatbot' ? <button
+                            onClick={() => window.openChatbot?.()}
+                            className="p-2.5 border border-zinc-800 rounded-md"
+                        >
+                            <LinkIcon height={20} width={20} />
+                        </button> : <a href={data.url} target="_blank" className="m-0">
                             <div className="p-2.5 border border-zinc-800 rounded-md">
                                 <LinkIcon height={20} width={20} />
                             </div>
-                        </a>
+                        </a>}
                     </div>
                 </div>
                 <div className='flex gap-2 mt-1 custom flex-wrap'>
@@ -47,7 +52,7 @@ export default function ProjectDetails() {
             <div className='flex gap-2 flex-col mt-8'>
                 {data.carousel_images?.length > 1
                     ?
-                    <HorizontalCarousel cardData={data.carousel_images} initialIndex={0}/>
+                    <HorizontalCarousel cardData={data.carousel_images} initialIndex={0} />
                     :
                     <img src={'/' + data.image} alt='screenshot' className='w-full rounded-md object-contain max-h-[480px]'></img>
                 }

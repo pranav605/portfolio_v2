@@ -9,7 +9,9 @@ export default function ChatBot() {
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
-
+   useEffect(() => {
+    window.openChatbot = () => setIsOpen(true);
+  }, []);
   const toggleChat = () => {
     setIsOpen(!isOpen);
   };
@@ -63,7 +65,7 @@ export default function ChatBot() {
   return (
     <>
       {/* Chat Window */}
-      <div
+      <div id='chatbot'
         className={`fixed bottom-0 right-0 w-full h-full sm:w-96 sm:h-[500px] sm:bottom-24 sm:right-6 bg-zinc-900 border-0 sm:border border-zinc-800 sm:rounded-lg shadow-2xl z-50 flex flex-col transition-all duration-300 ${isOpen
           ? 'opacity-100 translate-y-0 pointer-events-auto'
           : 'opacity-0 translate-y-4 pointer-events-none'
