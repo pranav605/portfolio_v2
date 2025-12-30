@@ -14,7 +14,7 @@
     "@vercel/speed-insights": "^1.2.0",
     "clsx": "^2.1.1",
     "motion": "^12.23.24",
-    "next": "^15.3.6",
+    "next": "15.3.8",
     "node-fetch": "^3.3.2",
     "openai": "^6.15.0",
     "pdf2json": "^4.0.0",
