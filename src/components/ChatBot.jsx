@@ -5,10 +5,6 @@ import { ChatBubbleLeftRightIcon, XMarkIcon } from '@heroicons/react/24/outline'
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    {
-      role: 'assistant',
-      content: 'Hello! I am a simulated AI assistant. How can I help you today?',
-    },
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -26,36 +22,43 @@ export default function ChatBot() {
     scrollToBottom();
   }, [messages, isOpen]);
 
-  const handleSendMessage = async (e) => {
-    e.preventDefault();
-    if (!inputValue.trim()) return;
+ const handleSendMessage = async (e) => {
+  e.preventDefault();
+  if (!inputValue.trim() || inputValue.length > 500) return;
 
-    // Add user message
-    const userMessage = { role: 'user', content: inputValue };
-    setMessages((prev) => [...prev, userMessage]);
-    setInputValue('');
-    setIsLoading(true);
+  const userMessage = { role: "user", content: inputValue };
+  const nextMessages = [...messages, userMessage]; 
+  setMessages(nextMessages);
+  setInputValue("");
+  setIsLoading(true);
 
-    // Simulate network delay and AI response
-    setTimeout(() => {
-      const responses = [
-        "That's an interesting perspective! Tell me more.",
-        "I can certainly help with that. Could you provide more details?",
-        "I'm just a demo bot, but I think your portfolio looks great!",
-        "Could you clarify what you mean by that?",
-        "That's a great question. In a real application, I would call an API here.",
-      ];
-      const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+  try {
+    const historyToSend = nextMessages.slice(-20); // max 20 messages
+    const response = await fetch("/api/chatAgent", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        message: inputValue,
+        history: historyToSend,
+      }),
+    });
 
-      const aiMessage = {
-        role: 'assistant',
-        content: randomResponse,
-      };
+    if (response.status === 429) {
+      alert("Too many requests! Please wait a moment.");
+      return;
+    }
 
-      setMessages((prev) => [...prev, aiMessage]);
-      setIsLoading(false);
-    }, 1500);
-  };
+    const data = await response.json();
+    const aiMessage = { role: "assistant", content: data.content };
+    setMessages((prev) => [...prev, aiMessage]);
+  } catch (err) {
+    console.error(err);
+  } finally {
+    setIsLoading(false);
+  }
+};
+
+
 
   return (
     <>
@@ -106,7 +109,7 @@ export default function ChatBot() {
                     />
                   </svg>
                 ) : (
-                  <ChatBubbleLeftRightIcon className="w-4 h-4 text-gray-400" />
+                  <img src='/favicon.png'></img>
                 )}
               </div>
               <div
@@ -122,7 +125,7 @@ export default function ChatBot() {
           {isLoading && (
             <div className="flex items-start gap-2">
               <div className="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center flex-shrink-0">
-                <ChatBubbleLeftRightIcon className="w-4 h-4 text-gray-400" />
+                <img src='/favicon.png'></img>
               </div>
               <div className="bg-zinc-800 rounded-lg p-3 text-sm text-gray-200">
                 <div className="flex gap-1">
@@ -144,7 +147,7 @@ export default function ChatBot() {
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="Type your message..."
-              className="flex-1 bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-2 text-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-zinc-600 focus:border-transparent"
+              className="flex-1 bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-2 text-md md:text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-zinc-600 focus:border-transparent"
             />
             <button
               type="submit"
