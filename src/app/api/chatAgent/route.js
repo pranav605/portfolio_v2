@@ -6,34 +6,6 @@ const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
 });
 
-const context = await (async () => {
-    // Read summary.txt
-    const summary = await fs.readFile("src/me/summary.txt", "utf-8");
-
-    // Read PDF (your existing pdf2json code)
-    const pdfData = await new Promise((resolve, reject) => {
-        const pdfParser = new PDFParser(null, 2); // merged text
-
-        pdfParser.on("pdfParser_dataError", reject);
-        pdfParser.on("pdfParser_dataReady", () => {
-            const linkedin = pdfParser.getRawTextContent()
-                .replace(/\r\n?/g, '\n')
-                .replace(/[^\S\n]{2,}/g, '\n')
-                .replace(/\n{3,}/g, '\n\n')
-                .trim();
-
-            resolve(linkedin);
-        });
-
-        pdfParser.loadPDF("src/me/linkedin.pdf");
-    });
-
-    return {
-        name: 'Sai Pranav Nishtala',
-        summary: summary.trim(),  // now properly loaded
-        linkedin: pdfData,
-    };
-})();
 
 async function push(text) {
     const data = {
@@ -149,16 +121,6 @@ let record_unknown_question_json = {
 let tools = [{ "type": "function", "function": record_user_details_json, description: "Record user details", parameters: {} },
 { "type": "function", "function": record_unknown_question_json, description: "Record unknown question", parameters: {} }]
 
-let system_prompt = `You are acting as ${context.name}. You are answering questions on ${context.name}'s website, \
-particularly questions related to ${context.name}'s career, background, skills and experience. \
-Your responsibility is to represent ${context.name} for interactions on the website as faithfully as possible. \
-You are given a summary of ${context.name}'s background and LinkedIn profile which you can use to answer questions. \
-Be professional and engaging, as if talking to a potential client or future employer who came across the website. \
-If you don't know the answer to any question, use your record_unknown_question tool to record the question that you couldn't answer, even if it's about something trivial or unrelated to career. \
-If the user is engaging in discussion, try to steer them towards getting in touch via email; ask for their email and record it using your record_user_details tool.`
-
-system_prompt += `\n\n## Summary:\n${context.summary}\n\n## LinkedIn Profile:\n${context.linkedin}\n\n`;
-system_prompt += `With this context, please chat with the user, always staying in character as ${context.name}.`;
 
 export async function POST(req) {
     const ip = req.headers.get("x-forwarded-for")?.split(",")[0] || req.headers.get("x-real-ip") || "unknown";
@@ -168,6 +130,39 @@ export async function POST(req) {
 
     try {
         const { message, history } = await req.json();
+
+        // Load files inside handler
+        const summary = await fs.readFile("src/me/summary.txt", "utf-8");
+        const pdfData = await new Promise((resolve, reject) => {
+            const parser = new PDFParser(null, 2);
+            parser.on("pdfParser_dataError", reject);
+            parser.on("pdfParser_dataReady", () => {
+                const text = parser.getRawTextContent()
+                    .replace(/\r\n?/g, '\n')
+                    .replace(/[^\S\n]{2,}/g, '\n')
+                    .replace(/\n{3,}/g, '\n\n')
+                    .trim();
+                resolve(text);
+            });
+            parser.loadPDF("src/me/linkedin.pdf");
+        });
+
+        const context = {
+            name: 'Sai Pranav Nishtala',
+            summary: summary.trim(),
+            linkedin: pdfData,
+        };
+
+        let system_prompt = `You are acting as ${context.name}. You are answering questions on ${context.name}'s website, \
+particularly questions related to ${context.name}'s career, background, skills and experience. \
+Your responsibility is to represent ${context.name} for interactions on the website as faithfully as possible. \
+You are given a summary of ${context.name}'s background and LinkedIn profile which you can use to answer questions. \
+Be professional and engaging, as if talking to a potential client or future employer who came across the website. \
+If you don't know the answer to any question, use your record_unknown_question tool to record the question that you couldn't answer, even if it's about something trivial or unrelated to career. \
+If the user is engaging in discussion, try to steer them towards getting in touch via email; ask for their email and record it using your record_user_details tool.`
+
+        system_prompt += `\n\n## Summary:\n${context.summary}\n\n## LinkedIn Profile:\n${context.linkedin}\n\n`;
+        system_prompt += `With this context, please chat with the user, always staying in character as ${context.name}.`;
 
         // Input validation
         if (typeof message !== "string" || message.length > 500) {

@@ -72,7 +72,7 @@ export default function ChatBot() {
         {/* Chat Header */}
         <div className="flex items-center justify-between p-4 border-b border-zinc-800 bg-zinc-950 sm:rounded-t-lg">
           <div className="flex items-center gap-2">
-            <h3 className="text-lg font-semibold text-white">Chat with AI</h3>
+            <h3 className="text-lg font-semibold text-white">Chat with S<b>AI</b></h3>
           </div>
           <button
             onClick={toggleChat}
