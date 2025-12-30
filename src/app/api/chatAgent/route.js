@@ -132,25 +132,102 @@ export async function POST(req) {
         const { message, history } = await req.json();
 
         // Load files inside handler
-        const summary = await fs.readFile("src/me/summary.txt", "utf-8");
-        const pdfData = await new Promise((resolve, reject) => {
-            const parser = new PDFParser(null, 2);
-            parser.on("pdfParser_dataError", reject);
-            parser.on("pdfParser_dataReady", () => {
-                const text = parser.getRawTextContent()
-                    .replace(/\r\n?/g, '\n')
-                    .replace(/[^\S\n]{2,}/g, '\n')
-                    .replace(/\n{3,}/g, '\n\n')
-                    .trim();
-                resolve(text);
-            });
-            parser.loadPDF("src/me/linkedin.pdf");
-        });
+        // const summary = await fs.readFile("src/me/summary.txt", "utf-8");
+        // const pdfData = await new Promise((resolve, reject) => {
+        //     const parser = new PDFParser(null, 2);
+        //     parser.on("pdfParser_dataError", reject);
+        //     parser.on("pdfParser_dataReady", () => {
+        //         const text = parser.getRawTextContent()
+        //             .replace(/\r\n?/g, '\n')
+        //             .replace(/[^\S\n]{2,}/g, '\n')
+        //             .replace(/\n{3,}/g, '\n\n')
+        //             .trim();
+        //         resolve(text);
+        //     });
+        //     parser.loadPDF("src/me/linkedin.pdf");
+        // });
 
         const context = {
             name: 'Sai Pranav Nishtala',
-            summary: summary.trim(),
-            linkedin: pdfData,
+            summary: "My name is Sai Pranav Nishtala. I'm software engineer, full stack developer and AI enthusiast. I'm originally from India, but I moved to Canada in 2023. I love all foods, particularly north Indian cuisine. I love anything with paneer in it, be it a curry, appetizer or a pizza.",
+            linkedin: `   
+Contact
+2269619335 (Mobile)
+pranav605@gmail.com
+www.linkedin.com/in/sai-pranav-
+nishtala (LinkedIn)
+github.com/pranav605 (Other)
+Top Skills
+JavaScript
+Node.js
+Front-End Development
+Certifications
+NextGen CTO
+Career Essentials in Project
+Management by Microsoft and
+LinkedIn
+Sai Pranav Nishtala
+Full Stack Developer | React & Node.js Specialist | Cloud,
+Kubernetes & Modern Web Apps | UI/UX Design | Azure | Open to
+Canadian Tech Roles
+Canada
+Summary
+Hi there, I'm a Full Stack Developer / Front End Developer with 2+
+years of experience in creating and maintaining Web applications.
+I've had the pleasure of working with React, HTML, JQuery, Azure -
+they're great tools that have helped me in my work.
+I have good knowledge and experience in RESTful API
+development, data migration.
+I'm always open to learning new things and improving my skills,
+and I'm grateful for the opportunities that I've had so far. I'm familiar
+with Agile development and source code management using GIT,
+and I do my best to stay up to date with the latest best practices.
+My proficiency lies in JavaScript, Python, SQL, and Java, and I'm
+constantly working on expanding my knowledge.
+I believe in the importance of problem-solving and communication
+skills, and I exceed expectations while meeting project deadlines. I'm
+always looking for new challenges and opportunities to grow, and I'm
+excited to see where my career will take me next. Let's connect!
+Experience
+Matdun
+Software Development Intern – AI & Computer Vision
+September 2024 - December 2024 (4 months)
+During my internship at Matdun, I played a pivotal role in developing an
+innovative computer vision security service. I led a team to create a dataset
+generation tool that streamlined AI model training, while also deploying
+optimized deep learning models for real-time applications. My experience
+included hands-on work with PyTorch and TensorFlow, enhancing my
+technical skills in AI and computer vision.
+  Page 1 of 2   
+Infosys
+2 years 9 months
+Technology Analyst (Software Engineer – Front-End Development)
+January 2023 - June 2023 (6 months)
+Hyderabad, Telangana, India
+At Infosys, I contributed to enhancing user experience through innovative
+front-end solutions. I developed interactive modules with React.js, optimized
+legacy systems for better usability, and resolved critical form validation issues,
+significantly improving user engagement and reducing support requests.
+Senior Systems Engineer (Software Engineer – Front-End
+Development)
+April 2022 - January 2023 (10 months)
+Hyderabad, Telangana, India
+In my role at Infosys, I contributed significantly to the development of a
+React.js-based e-commerce platform by creating dynamic user interfaces
+and enhancing content relevance. I successfully implemented location-based
+filtering and designed interactive product detail pages, which improved user
+experience and engagement. My efforts in modernizing the UI led to a more
+efficient codebase and improved performance across the platform.
+System Engineer
+October 2020 - April 2022 (1 year 7 months)
+Hyderabad, Telangana, India
+Education
+University of Windsor
+Master's degree, Computer Science · (September 2023 - December 2024)
+Anil Neerukonda Institute Of Technology & Sciences
+Bachelor of Technology, Computer Science · (2016 - 2020)
+  Page 2 of 2
+`,
         };
 
         let system_prompt = `You are acting as ${context.name}. You are answering questions on ${context.name}'s website, \
