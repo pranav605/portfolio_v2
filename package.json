@@ -10,10 +10,12 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@supabase/supabase-js": "^2.89.0",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
     "clsx": "^2.1.1",
     "motion": "^12.23.24",
+    "mustache": "^4.2.0",
     "next": "15.3.8",
     "node-fetch": "^3.3.2",
     "openai": "^6.15.0",

@@ -1,6 +1,8 @@
 import OpenAI from "openai";
 import fs from "node:fs/promises";
 import PDFParser from "pdf2json";
+import { supabase } from '../../../utils/supabaseClient'
+import Mustache from "mustache"
 
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
@@ -39,10 +41,27 @@ function record_user_details({ email, name = "Name not provided", notes = "not p
     return { recorded: "ok" };
 }
 
+
 function record_unknown_question({ question }) {
-    if (!question || typeof question !== "string") return { error: "Invalid question" };
-    push(`Recording ${question}`);
-    return { recorded: "ok" };
+  if (!question || typeof question !== "string") return { error: "Invalid question" };
+
+  // Push to Pushover or logging
+  push(`Recording ${question}`);
+
+  // Fire-and-forget DB insert
+  supabase
+    .from("questions")
+    .insert({ question: question})
+    .then(({ data, error }) => {
+      if (error) console.error("Failed to insert unknown question:", error);
+      else console.log("Unknown question saved:", data);
+    })
+    .catch((err) => {
+      console.error("Unexpected error inserting unknown question:", err);
+    });
+
+  // Always return ok to the chatbot
+  return { recorded: "ok" };
 }
 
 async function handleToolCalls(toolCalls) {
@@ -121,6 +140,35 @@ let record_unknown_question_json = {
 let tools = [{ "type": "function", "function": record_user_details_json, description: "Record user details", parameters: {} },
 { "type": "function", "function": record_unknown_question_json, description: "Record unknown question", parameters: {} }]
 
+// Fetch system prompts from Supabase
+async function getSystemPrompts() {
+    const { data, error } = await supabase
+        .from("system_prompts")
+        .select("*");
+
+    if (error) {
+        console.error("Error fetching system prompts:", error);
+        return null;
+    }
+
+    // Convert array to object by type for easy access
+    const promptMap = {};
+    data.forEach((row) => {
+        promptMap[row.type] = row.content;
+    });
+
+    return promptMap;
+}
+
+async function getAdditionalContext() {
+    const { data, error } = await supabase
+        .from('questions').select('*');
+    if (error) {
+        console.error("Error fetching system prompts:", error);
+        return null;
+    }
+    return data;
+}
 
 export async function POST(req) {
     const ip = req.headers.get("x-forwarded-for")?.split(",")[0] || req.headers.get("x-real-ip") || "unknown";
@@ -150,96 +198,35 @@ export async function POST(req) {
         const context = {
             name: 'Sai Pranav Nishtala',
             summary: "My name is Sai Pranav Nishtala. I'm software engineer, full stack developer and AI enthusiast. I'm originally from India, but I moved to Canada in 2023. I love all foods, particularly north Indian cuisine. I love anything with paneer in it, be it a curry, appetizer or a pizza.",
-            linkedin: `   
-Contact
-2269619335 (Mobile)
-pranav605@gmail.com
-www.linkedin.com/in/sai-pranav-
-nishtala (LinkedIn)
-github.com/pranav605 (Other)
-Top Skills
-JavaScript
-Node.js
-Front-End Development
-Certifications
-NextGen CTO
-Career Essentials in Project
-Management by Microsoft and
-LinkedIn
-Sai Pranav Nishtala
-Full Stack Developer | React & Node.js Specialist | Cloud,
-Kubernetes & Modern Web Apps | UI/UX Design | Azure | Open to
-Canadian Tech Roles
-Canada
-Summary
-Hi there, I'm a Full Stack Developer / Front End Developer with 2+
-years of experience in creating and maintaining Web applications.
-I've had the pleasure of working with React, HTML, JQuery, Azure -
-they're great tools that have helped me in my work.
-I have good knowledge and experience in RESTful API
-development, data migration.
-I'm always open to learning new things and improving my skills,
-and I'm grateful for the opportunities that I've had so far. I'm familiar
-with Agile development and source code management using GIT,
-and I do my best to stay up to date with the latest best practices.
-My proficiency lies in JavaScript, Python, SQL, and Java, and I'm
-constantly working on expanding my knowledge.
-I believe in the importance of problem-solving and communication
-skills, and I exceed expectations while meeting project deadlines. I'm
-always looking for new challenges and opportunities to grow, and I'm
-excited to see where my career will take me next. Let's connect!
-Experience
-Matdun
-Software Development Intern – AI & Computer Vision
-September 2024 - December 2024 (4 months)
-During my internship at Matdun, I played a pivotal role in developing an
-innovative computer vision security service. I led a team to create a dataset
-generation tool that streamlined AI model training, while also deploying
-optimized deep learning models for real-time applications. My experience
-included hands-on work with PyTorch and TensorFlow, enhancing my
-technical skills in AI and computer vision.
-  Page 1 of 2   
-Infosys
-2 years 9 months
-Technology Analyst (Software Engineer – Front-End Development)
-January 2023 - June 2023 (6 months)
-Hyderabad, Telangana, India
-At Infosys, I contributed to enhancing user experience through innovative
-front-end solutions. I developed interactive modules with React.js, optimized
-legacy systems for better usability, and resolved critical form validation issues,
-significantly improving user engagement and reducing support requests.
-Senior Systems Engineer (Software Engineer – Front-End
-Development)
-April 2022 - January 2023 (10 months)
-Hyderabad, Telangana, India
-In my role at Infosys, I contributed significantly to the development of a
-React.js-based e-commerce platform by creating dynamic user interfaces
-and enhancing content relevance. I successfully implemented location-based
-filtering and designed interactive product detail pages, which improved user
-experience and engagement. My efforts in modernizing the UI led to a more
-efficient codebase and improved performance across the platform.
-System Engineer
-October 2020 - April 2022 (1 year 7 months)
-Hyderabad, Telangana, India
-Education
-University of Windsor
-Master's degree, Computer Science · (September 2023 - December 2024)
-Anil Neerukonda Institute Of Technology & Sciences
-Bachelor of Technology, Computer Science · (2016 - 2020)
-  Page 2 of 2
-`,
+            linkedin: ` `,
         };
 
-        let system_prompt = `You are acting as ${context.name}. You are answering questions on ${context.name}'s website, \
-particularly questions related to ${context.name}'s career, background, skills and experience. \
-Your responsibility is to represent ${context.name} for interactions on the website as faithfully as possible. \
-You are given a summary of ${context.name}'s background and LinkedIn profile which you can use to answer questions. \
-Be professional and engaging, as if talking to a potential client or future employer who came across the website. \
-If you don't know the answer to any question, use your record_unknown_question tool to record the question that you couldn't answer, even if it's about something trivial or unrelated to career. \
-If the user is engaging in discussion, try to steer them towards getting in touch via email; ask for their email and record it using your record_user_details tool.`
 
-        system_prompt += `\n\n## Summary:\n${context.summary}\n\n## LinkedIn Profile:\n${context.linkedin}\n\n`;
-        system_prompt += `With this context, please chat with the user, always staying in character as ${context.name}.`;
+        // Get prompts from Supabase
+        const prompts = await getSystemPrompts();
+        if (!prompts) {
+            return new Response(JSON.stringify({ error: "Could not load prompts" }), { status: 500 });
+        }
+
+        //Get additional questions and answers from db
+        const additionalContext = await getAdditionalContext();
+        if (!additionalContext) {
+            return new Response(JSON.stringify({ error: "Could not load additional context" }), { status: 500 });
+        }
+        console.log(additionalContext);
+        const formattedQA = additionalContext
+            .filter(q => q.is_answered)
+            .map(
+                (q) => `Q: ${q.question}\nA: ${q.answer}`
+            )
+            .join("\n\n");
+
+        let system_prompt = prompts["system"] || "";
+
+        system_prompt = Mustache.render(system_prompt, { summary: prompts["summary"], resume: prompts["resume"], linkedin: prompts["linkedin"], name: "Sai Pranav Nishtala" })
+        system_prompt+= `\n\n ##Here is some additional context from questions users have asked in other chats:${formattedQA}.`
+        // system_prompt += `\n\n## Summary:\n${context.summary}\n\n## LinkedIn Profile:\n${context.linkedin}\n\n`;
+        // system_prompt += `With this context, please chat with the user, always staying in character as ${context.name}.`;
 
         // Input validation
         if (typeof message !== "string" || message.length > 500) {
