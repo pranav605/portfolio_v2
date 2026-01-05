@@ -4,7 +4,7 @@ const data = [
         image: 'chatbot.webp',
         title: 'Career Conversation Chatbot',
         url: '#',
-        carousel_images: [],
+        carousel_images: ['chatbot_1.webp', 'chatbot_2.webp', 'chatbot_3.webp'],
         technologies: [
             {
                 title: 'Next.js',
@@ -42,10 +42,13 @@ const data = [
                 </svg>,
             }
         ],
-        description: 'A career conversation chatbot which answers questions about me',
+        description: 'An agentic AI chatbot that represents my professional profile, answers career-related questions, and continuously improves using real user interactions.',
         longDescription: [
-            "Developed an AI-powered personal website chatbot using Next.js and the OpenAI API, designed to represent my professional background, skills, and experience through natural, conversational interactions.",
-            "The chatbot integrates structured system prompts and custom tool calling to intelligently handle user interactions, including capturing contact details and logging unanswered questions. It also leverages Pushover notifications to send real-time alerts for user interest and important events, enabling quick follow-ups and continuous improvement. Built with scalability, security, and performance in mind, the solution is deployed on Vercel and seamlessly integrated into the website experience."
+            "Built an agentic career conversation chatbot that can act as a digital version of me, answering questions about my professional background using structured data from my resume, LinkedIn profile, and custom system prompts. The chatbot uses OpenAI’s API with tool-calling capabilities to go beyond simple Q&A and intelligently manage conversations.",
+
+            "When the chatbot encounters questions it cannot confidently answer, it automatically records them in a Supabase database for future reference. A dedicated dashboard allows me to review, curate, and add answers to these unanswered questions, enabling the chatbot to immediately use this new knowledge in subsequent conversations.",
+
+            "The system includes real-time notifications using Pushover for high-value or trivial user interactions, ensuring instant awareness of engagement. The entire workflow is designed with scalability and security in mind, leveraging Supabase Row Level Security (RLS) for authenticated access and deployed seamlessly using Next.js."
         ],
 
         showcase: true,
