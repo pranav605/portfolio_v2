@@ -86,7 +86,7 @@ const HorizontalCarousel = ({ cardData, initialIndex }) => {
 const CarouselCard = ({ data, isCenter, style, onClick }) => (
   <motion.div
     style={style}
-    className="top-0 absolute w-full max-w-xs sm:max-w-md rounded-2xl flex flex-col justify-between items-center transition-all duration-300"
+    className=" absolute w-full max-w-xs sm:max-w-md rounded-2xl flex flex-col justify-between items-center transition-all duration-300"
     onClick={onClick}
   >
     <div className="flex items-center justify-center w-full mb-6 cursor-zoom-in">
