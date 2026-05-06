@@ -1,0 +1,184 @@
+---
+title: "Why I Started Building My Own Tools"
+date: "2026-05-05"
+readTime: "5 min read"
+excerpt: "I started building my own tools because I was tired of using random websites"
+image: "/blog_images/pdf_conv.webp"
+featured: true
+---
+
+## The Problem
+
+Picture this: you are applying for a job, already a little stressed, and you need to quickly upload your resume. The job portal only supports PDF, and your file is in Word format. It sounds like a small inconvenience, but somehow it always turns into a slightly uncomfortable experience.
+
+If you are anything like me, your first instinct is to open Google and search for a free tool to convert your Word document into a PDF. Within seconds, you fall into a familiar pattern that probably looks something like this:
+
+1. Search on Google  
+2. Click the first link  
+3. Upload your file  
+4. Hope for the best  
+
+The recommended sites almost always have names like “iLovePDF” or “Smallpdf.” I do not know who decided that PDFs needed emotional branding, but I have never once felt reassured by it. Still, in that moment, convenience wins and you go ahead anyway.
+
+And every single time I did this, the same thought showed up in the back of my mind:
+
+> Why am I uploading my personal information to some random website?
+
+It was not a new realization. I knew it was a questionable decision. I just kept making it anyway. The alternative was usually paying for a subscription, and that is not an easy choice when you are a student or just starting out and trying to keep expenses low.
+
+To be fair, there are legitimate tools. Adobe, for example, offers free online utilities for document conversion. They clearly state that files are deleted within an hour and that privacy is a priority. On paper, that should be enough. But in practice, there is always a small layer of doubt that does not fully go away. It is the kind of doubt that quietly asks, “This is probably fine… but what if it is not?”
+
+Offline tools do not fully solve the problem either. Microsoft Word allows exporting to PDF, but with limits. You get one free conversion every thirty days on a rolling basis. That number feels surprisingly small when you are actively updating your resume and applying to multiple roles. Anything beyond that takes you back to subscriptions again.
+
+<figure className="m-0">
+  <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg bg-black/20">
+    <img 
+      src="/blog_images/adobe_warning.webp" 
+      alt="Adobe Warning" 
+      className="w-full h-auto"
+    />
+  </div>
+  <figcaption className="text-center text-sm text-gray-500 mt-3 italic">
+    Adobe's premium warning for PDF creation limit. 
+  </figcaption>
+</figure>
+
+---
+
+## The Dream
+
+At some point, this entire process started to feel unnecessary.
+
+As someone with a background in computer science, I kept coming back to a simple question: how hard would it be to build something like this myself?
+
+Of course, not everything can or should be built by one person. But many of these small utilities, like a visa photo cropper or a simple file compression tool, do not seem complex enough to justify sending your data to an external service every time you need them.
+
+In theory, these tools are well within reach. Basic web technologies are enough to get something functional working. The idea itself was never the difficult part.
+
+The real problem was everything that came after the idea.
+
+Every time I tried to build something like this, I ended up stuck in an endless loop of searching. I would spend hours comparing libraries, reading documentation, and trying to understand which approach was actually correct. Tutorials helped, but they also introduced new confusion. Often they were outdated or slightly different from what I needed.
+
+Eventually, something else would take priority. The idea would lose momentum and fade away.
+
+The gap between “this would be useful” and “this is built and working” always felt larger than it should have been.
+
+---
+
+## Enter AI
+
+Then AI entered the picture, and the dynamic changed.
+
+What used to feel like a multi day effort began to shrink. Tasks that required long stretches of research and trial and error could now be explored much faster. Sometimes within a few hours. Occasionally even less.
+
+For the first time, building these small tools felt approachable.
+
+That does not mean AI is perfect. It can be wrong, sometimes confidently wrong. It can suggest solutions that look convincing but do not actually work. In many ways, it behaves like a very confident friend who explains things clearly but is not always correct.
+
+So the responsibility to verify and think critically still remains.
+
+But the difference is that you are no longer starting from scratch. Instead of spending most of your time figuring out where to begin, you can focus more on what you are trying to build.
+
+It feels less like replacing effort and more like reducing friction. You guide the direction, and AI helps move things forward.
+
+And that small shift changes everything.
+
+<figure className="m-0">
+  <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg bg-black/20">
+    <img 
+      src="/blog_images/ai_help.webp" 
+      alt="ai helping building" 
+      className="w-full h-auto"
+    />
+  </div>
+  <figcaption className="text-center text-sm text-gray-500 mt-3 italic">
+    AI helping building.
+  </figcaption>
+</figure>
+
+---
+
+## The Local Tool
+
+Once that shift became clear, I decided to act on it.
+
+The first problem I wanted to solve was the PDF situation. At the time, I was applying to jobs and frequently updating my resume. This meant constantly creating new PDF versions, which kept pushing me back to the same websites I did not fully trust.
+
+So I decided to build my own solution.
+
+I started by exploring different ways to convert Word documents into PDFs. Using AI tools helped narrow down options quickly, and I eventually found a Python library that handled the conversion.
+
+Since I wanted the tool to be easily accessible and fully under my control, I used Flask to build a simple web application that I could run locally.
+
+Within a few hours, I had something working.
+
+It was not perfect. It did not need to be. It solved my problem without requiring me to upload anything to an external service.
+
+And that is when something interesting happened.
+
+The original question disappeared.
+
+Instead of asking, “Why am I using this random website?” I started asking:
+
+“If I can build this, what else can I build?”
+
+From there, it became a process. One small tool at a time. Each one solving a minor inconvenience in my daily workflow.
+
+Over time, it turned into a collection of utilities, all in one place, and something I plan to keep improving.
+
+<figure className="m-0">
+  <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg bg-black/20">
+    <img 
+      src="/blog_images/pdf_tool.webp" 
+      alt="pdf tool" 
+      className="w-full h-auto"
+    />
+  </div>
+  <figcaption className="text-center text-sm text-gray-500 mt-3 italic">
+    My own pdf tool.
+  </figcaption>
+</figure>
+
+---
+
+### What changed?
+
+AI did not remove the effort required to build things. It changed how easy it is to begin.
+
+The distance between idea and execution used to feel long and unpredictable. Now it feels shorter and more manageable. Not effortless, but reasonable.
+
+Computer science has always been about solving problems by communicating with machines. That idea has not changed.
+
+What has changed is how quickly that communication turns into something real.
+
+And that means more problems can actually be solved, especially the small ones that used to be ignored.
+
+---
+
+## Final Thoughts
+
+At some point, this stopped being just about convenience and started becoming about control.
+
+We rely on countless online tools every day, often without thinking too deeply about where our data goes. Most of the time, it is probably fine. But “probably fine” is not always a satisfying answer.
+
+Building my own tools is not about replacing everything on the internet. It is about taking ownership of the parts that matter to me. The tools I use often. The tasks that involve my personal data. The things I would rather not outsource.
+
+So I decided to lean into that.
+
+To keep building. To keep experimenting. To keep solving my own problems where I can.
+
+And if you have ever had the thought, “there should be a better way to do this,” this might be a good time to try building it yourself.
+
+Because for the first time, it actually feels possible.
+<figure className="m-0">
+  <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg bg-black/20">
+    <img 
+      src="/blog_images/iron_man.webp" 
+      alt="iron man" 
+      className="w-full h-auto"
+    />
+  </div>
+  <figcaption className="text-center text-sm text-gray-500 mt-3 italic">
+    Like Iron Man's Jarvis.
+  </figcaption>
+</figure>
