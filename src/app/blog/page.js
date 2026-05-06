@@ -1,6 +1,6 @@
 import Tab from '@/components/Tab'
 import Tabs from '@/components/Tabs'
-import React from 'react'
+import React, { Suspense } from 'react'
 import Link from 'next/link'
 import { getAllPosts } from '@/lib/mdx'
 
@@ -62,22 +62,24 @@ export default function Blog() {
         <h1 className='text-3xl md:text-4xl font-bold tracking-tighter leading-tight text-white mb-4'>Blog</h1>
         <p className="text-gray-400 text-lg">Thoughts, ideas, and experiments.</p>
       </div>
-      <Tabs>
-        <Tab key="featured" title="Featured">
-          <div className="flex flex-col mt-6">
-            {featuredBlogs.map(blog => (
-              <BlogCard key={blog.id} blog={blog} />
-            ))}
-          </div>
-        </Tab>
-        <Tab key="all" title="All">
-          <div className="flex flex-col mt-6">
-            {allBlogs.map(blog => (
-              <BlogCard key={blog.id} blog={blog} />
-            ))}
-          </div>
-        </Tab>
-      </Tabs>
+      <Suspense fallback={<div className="text-gray-400 mt-6">Loading...</div>}>
+        <Tabs>
+          <Tab key="featured" title="Featured">
+            <div className="flex flex-col mt-6">
+              {featuredBlogs.map(blog => (
+                <BlogCard key={blog.id} blog={blog} />
+              ))}
+            </div>
+          </Tab>
+          <Tab key="all" title="All">
+            <div className="flex flex-col mt-6">
+              {allBlogs.map(blog => (
+                <BlogCard key={blog.id} blog={blog} />
+              ))}
+            </div>
+          </Tab>
+        </Tabs>
+      </Suspense>
     </div>
   )
 }
