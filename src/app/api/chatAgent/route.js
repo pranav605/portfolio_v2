@@ -11,12 +11,12 @@ const openai = new OpenAI({
 
 async function push(text) {
     const data = {
-        "token": process.env.PUSHOVER_TOKEN,
-        "user": process.env.PUSHOVER_USER,
-        "message": text,
+        "api_key": process.env.PINGWIN_API_KEY,
+        "title": "Unknown question asked",
+        "body": text,
     }
     try {
-        const response = await fetch('https://api.pushover.net/1/messages.json', {
+        const response = await fetch('https://pingwin-backend.vercel.app/api/notify', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
