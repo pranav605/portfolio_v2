@@ -44,7 +44,7 @@ export default async function BlogPost({ params }) {
                 </div>
 
                 {frontmatter.image && (
-                    <div className="w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative">
+                    <div className="w-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative">
                         <img
                             src={frontmatter.image}
                             alt="Hero image"
